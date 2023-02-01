@@ -1,5 +1,6 @@
 #include "list_int_queue.h"
 #include "assert.h"
+#include "stdlib.h"
 
 List_Int_Queue::List_Int_Queue() {
     front = NULL;
@@ -9,7 +10,7 @@ List_Int_Queue::List_Int_Queue() {
 
 void List_Int_Queue::enqueue(int x) {
     //make node
-    node* temp = malloc(sizeof(node);
+    node* temp = new(node);
     temp->data = x;
     temp->next = NULL;
     size++;
@@ -38,15 +39,15 @@ int List_Int_Queue::dequeue() {
 		front = front->next; //make the front the next node in the queue
 	}
   int tempdata = temp->data; //temp value to the temp pointer to hold the data.
-	free(temp); //free the node from the dynamic memory
-  q->size--;
+	delete(temp); //delete the node from the dynamic memory
+  size--;
   return tempdata;
 }
 
 
 bool List_Int_Queue::empty()
 {
-    return size==0
+    return size==0;
 }
 
 bool List_Int_Queue::full() {
